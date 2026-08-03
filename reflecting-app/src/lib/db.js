@@ -95,7 +95,17 @@ export async function dbGetAllBookmarks() {
   });
 }
 
-export async function dbToggleBookmark(nameId) {
+export async function dbGetBookmark(nameId) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx  = db.transaction(BOOKMARKS_STORE, "readonly");
+    const req = tx.objectStore(BOOKMARKS_STORE).get(nameId);
+    req.onsuccess = () => resolve(req.result ?? null);
+    req.onerror   = () => reject(req.error);
+  });
+}
+
+export async function dbToggleBookmark(nameId, page = 0) {
   const db = await openDB();
   return new Promise(async (resolve, reject) => {
     const tx    = db.transaction(BOOKMARKS_STORE, "readwrite");
@@ -105,7 +115,7 @@ export async function dbToggleBookmark(nameId) {
       g.onsuccess = () => r(g.result);
       g.onerror   = () => e(g.error);
     });
-    const req = existing ? store.delete(nameId) : store.put({ nameId });
+    const req = existing ? store.delete(nameId) : store.put({ nameId, page });
     req.onsuccess = () => resolve(!existing);
     req.onerror   = () => reject(req.error);
   });

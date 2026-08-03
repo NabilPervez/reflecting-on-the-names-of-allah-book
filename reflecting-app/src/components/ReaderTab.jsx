@@ -4,15 +4,27 @@ import {
   dbSaveReflection,
   dbToggleBookmark,
   dbGetAllBookmarks,
+  dbGetBookmark,
 } from "../lib/db.js";
 import { pageWrap, textarea, label, primaryBtn, ghostBtn, skeletonLine } from "../lib/styles.js";
 
 import HTMLFlipBook from 'react-pageflip';
 
 // ── Chapter body renderer ─────────────────────────────────────────────────────
-function ChapterBody({ chapter, isDesktop }) {
+function ChapterBody({ chapter, isDesktop, initialPage, onPageChange }) {
   // Filter out any pages that might be undefined or zero if they exist
   const pages = chapter.pages || [];
+  const flipBookRef = useRef(null);
+
+  useEffect(() => {
+    if (flipBookRef.current && initialPage > 0) {
+      try {
+        flipBookRef.current.pageFlip().turnToPage(initialPage);
+      } catch (e) {
+        console.error("Error turning to page", e);
+      }
+    }
+  }, [initialPage, pages.length]);
   
   if (pages.length === 0) {
     return <div style={{ padding: 20, textAlign: 'center' }}>No pages available for this chapter.</div>;
@@ -71,6 +83,7 @@ function ChapterBody({ chapter, isDesktop }) {
       {/* Body FlipBook */}
       <div className="reader-body" style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
         <HTMLFlipBook
+          ref={flipBookRef}
           width={350}
           height={500}
           size="stretch"
@@ -82,6 +95,7 @@ function ChapterBody({ chapter, isDesktop }) {
           showCover={false}
           mobileScrollSupport={false}
           style={{ margin: '0 auto' }}
+          onFlip={(e) => onPageChange(e.data)}
         >
           {pages.map((p) => (
             <div key={p} className="demoPage" style={{ backgroundColor: '#fff', boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
@@ -328,20 +342,32 @@ function ReflectionPanel({ chapter, showToast }) {
 export default function ReaderTab({ chapter, onBack, showToast }) {
   const [activeView, setActiveView] = useState("read"); // "read" | "reflect"
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [initialPage, setInitialPage] = useState(0);
   const isDesktop = window.innerWidth >= 768;
 
   useEffect(() => {
     if (!chapter) return;
-    dbGetAllBookmarks().then((bmarks) => {
-      setIsBookmarked(bmarks.includes(chapter.id));
+    setCurrentPageIndex(0);
+    setInitialPage(0);
+    dbGetBookmark(chapter.id).then((bmark) => {
+      if (bmark) {
+        setIsBookmarked(true);
+        if (bmark.page !== undefined) {
+          setInitialPage(bmark.page);
+          setCurrentPageIndex(bmark.page);
+        }
+      } else {
+        setIsBookmarked(false);
+      }
     });
   }, [chapter?.id]);
 
   const toggleBookmark = async () => {
     if (!chapter) return;
-    const isNow = await dbToggleBookmark(chapter.id);
+    const isNow = await dbToggleBookmark(chapter.id, currentPageIndex);
     setIsBookmarked(isNow);
-    showToast(isNow ? "Bookmark added ◈" : "Bookmark removed", "info");
+    showToast(isNow ? "Bookmark saved on this page ◈" : "Bookmark removed", "info");
   };
 
   if (!chapter) {
@@ -384,8 +410,7 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
           alignItems: "center",
           gap: 12,
           marginBottom: 24,
-          position: "sticky",
-          top: 0,
+          position: "relative",
           background: "var(--surface)",
           padding: "10px 0",
           zIndex: 50,
@@ -450,7 +475,12 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
         <>
           {/* Stacked Layout: Reading content followed by Reflection Panel (Desktop) */}
           <div style={{ marginBottom: 40 }}>
-            <ChapterBody chapter={chapter} isDesktop={isDesktop} />
+            <ChapterBody 
+              chapter={chapter} 
+              isDesktop={isDesktop} 
+              initialPage={initialPage} 
+              onPageChange={setCurrentPageIndex} 
+            />
           </div>
 
           <div
@@ -517,7 +547,12 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
           </div>
 
           {activeView === "read" ? (
-            <ChapterBody chapter={chapter} isDesktop={isDesktop} />
+            <ChapterBody 
+              chapter={chapter} 
+              isDesktop={isDesktop} 
+              initialPage={initialPage} 
+              onPageChange={setCurrentPageIndex} 
+            />
           ) : (
             <ReflectionPanel chapter={chapter} showToast={showToast} />
           )}
