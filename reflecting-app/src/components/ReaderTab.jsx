@@ -7,8 +7,17 @@ import {
 } from "../lib/db.js";
 import { pageWrap, textarea, label, primaryBtn, ghostBtn, skeletonLine } from "../lib/styles.js";
 
+import HTMLFlipBook from 'react-pageflip';
+
 // ── Chapter body renderer ─────────────────────────────────────────────────────
 function ChapterBody({ chapter }) {
+  // Filter out any pages that might be undefined or zero if they exist
+  const pages = chapter.pages || [];
+  
+  if (pages.length === 0) {
+    return <div style={{ padding: 20, textAlign: 'center' }}>No pages available for this chapter.</div>;
+  }
+
   return (
     <div>
       {/* Header */}
@@ -57,24 +66,31 @@ function ChapterBody({ chapter }) {
         </div>
       </div>
 
-      {/* Body paragraphs */}
-      <div className="reader-body">
-        {chapter.body.map((para, i) => (
-          <p
-            key={i}
-            style={{
-              fontFamily: "'Merriweather', Georgia, serif",
-              fontSize: "1em",
-              lineHeight: 1.9,
-              color: "var(--on-surface)",
-              marginBottom: "1.4em",
-              textAlign: "justify",
-              hyphens: "auto",
-            }}
-          >
-            {para}
-          </p>
-        ))}
+      {/* Body FlipBook */}
+      <div className="reader-body" style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
+        <HTMLFlipBook
+          width={350}
+          height={500}
+          size="stretch"
+          minWidth={280}
+          maxWidth={450}
+          minHeight={400}
+          maxHeight={650}
+          maxShadowOpacity={0.5}
+          showCover={false}
+          mobileScrollSupport={true}
+          style={{ margin: '0 auto' }}
+        >
+          {pages.map((p) => (
+            <div key={p} className="demoPage" style={{ backgroundColor: '#fff', boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
+              <img
+                src={`/pages/page_${p}.jpg`}
+                alt={`Page ${p}`}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </div>
+          ))}
+        </HTMLFlipBook>
       </div>
     </div>
   );
@@ -308,7 +324,9 @@ function ReflectionPanel({ chapter, showToast }) {
 
 // ── Reader Tab ────────────────────────────────────────────────────────────────
 export default function ReaderTab({ chapter, onBack, showToast }) {
+  const [activeView, setActiveView] = useState("read"); // "read" | "reflect"
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const isDesktop = window.innerWidth >= 768;
 
   useEffect(() => {
     if (!chapter) return;
@@ -426,36 +444,83 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
         </button>
       </div>
 
-      {/* Stacked Layout: Reading content followed by Reflection Panel */}
-      <div style={{ marginBottom: 40 }}>
-        <ChapterBody chapter={chapter} />
-      </div>
+      {isDesktop ? (
+        <>
+          {/* Stacked Layout: Reading content followed by Reflection Panel (Desktop) */}
+          <div style={{ marginBottom: 40 }}>
+            <ChapterBody chapter={chapter} />
+          </div>
 
-      <div
-        style={{
-          background: "var(--surface-lowest)",
-          borderRadius: 16,
-          padding: "24px",
-          border: "1px solid var(--outline-ghost)",
-          boxShadow: "0 4px 20px var(--shadow)",
-          marginBottom: 60,
-        }}
-      >
-        <div
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 24,
-            fontWeight: 600,
-            color: "var(--on-surface)",
-            marginBottom: 20,
-            paddingBottom: 16,
-            borderBottom: "1px solid var(--outline-ghost)",
-          }}
-        >
-          Your Reflection
-        </div>
-        <ReflectionPanel chapter={chapter} showToast={showToast} />
-      </div>
+          <div
+            style={{
+              background: "var(--surface-lowest)",
+              borderRadius: 16,
+              padding: "24px",
+              border: "1px solid var(--outline-ghost)",
+              boxShadow: "0 4px 20px var(--shadow)",
+              marginBottom: 60,
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 24,
+                fontWeight: 600,
+                color: "var(--on-surface)",
+                marginBottom: 20,
+                paddingBottom: 16,
+                borderBottom: "1px solid var(--outline-ghost)",
+              }}
+            >
+              Your Reflection
+            </div>
+            <ReflectionPanel chapter={chapter} showToast={showToast} />
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Mobile tab toggle */}
+          <div
+            style={{
+              display: "flex",
+              background: "var(--surface-lowest)",
+              borderRadius: 12,
+              padding: 4,
+              marginBottom: 22,
+              border: "1px solid var(--outline-ghost)",
+            }}
+          >
+            {["read", "reflect"].map((v) => (
+              <button
+                key={v}
+                onClick={() => setActiveView(v)}
+                style={{
+                  flex: 1,
+                  padding: "9px 0",
+                  borderRadius: 9,
+                  border: "none",
+                  background: activeView === v ? "var(--primary)" : "transparent",
+                  color: activeView === v ? "var(--on-primary)" : "var(--on-surface-var)",
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  textTransform: "capitalize",
+                }}
+              >
+                {v === "read" ? "✦ Read" : "✴ Reflect"}
+              </button>
+            ))}
+          </div>
+
+          {activeView === "read" ? (
+            <ChapterBody chapter={chapter} />
+          ) : (
+            <ReflectionPanel chapter={chapter} showToast={showToast} />
+          )}
+        </>
+      )}
     </div>
   );
 }

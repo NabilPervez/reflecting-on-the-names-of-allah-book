@@ -123,7 +123,6 @@ export default function SettingsTab({
       <h1 style={pageTitle}>Settings</h1>
       <p style={pageSubtitle}>Customize your reading experience</p>
 
-      {/* Appearance */}
       <div style={settingsSection}>
         <div style={settingsTitle}>Appearance</div>
 
@@ -136,28 +135,6 @@ export default function SettingsTab({
             { value: "light",  label: "Light" },
             { value: "dark",   label: "Dark" },
             { value: "sepia",  label: "Sepia" },
-          ]}
-        />
-
-        <OptionGroup
-          label="Text Size"
-          value={fontSize}
-          onChange={setFontSize}
-          options={[
-            { value: "sm", label: "Small" },
-            { value: "md", label: "Medium" },
-            { value: "lg", label: "Large" },
-            { value: "xl", label: "X-Large" },
-          ]}
-        />
-
-        <OptionGroup
-          label="Reading Font"
-          value={fontFamily}
-          onChange={setFontFamily}
-          options={[
-            { value: "serif",     label: "Serif (Merriweather)" },
-            { value: "sans-serif", label: "Sans-serif (DM Sans)" },
           ]}
         />
       </div>
