@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1b4332" />
+    <meta
+      name="description"
+      content="Read and reflect on the Names of Allah. Save personal notes and du'as, all stored privately on your device."
+    />
+    <title>Reflecting on the Names of Allah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── CSS Variables / Themes ────────────────────────────────────────── */
+      :root {
+        /* Light (default) */
+        --surface:         #f8f5f0;
+        --surface-low:     #f2ede5;
+        --surface-lowest:  #ffffff;
+        --on-surface:      #1c1b18;
+        --on-surface-var:  #4a4843;
+        --primary:         #1b4332;
+        --primary-dim:     #2d6a4f;
+        --accent:          #d4af37;
+        --accent-dim:      #b8991f;
+        --outline:         rgba(26,28,24,0.12);
+        --outline-ghost:   rgba(26,28,24,0.08);
+        --on-primary:      #ffffff;
+        --shimmer-a:       #ede8df;
+        --shimmer-b:       #f8f5f0;
+        --shadow:          rgba(26,28,24,0.08);
+        --nav-bg:          rgba(248,245,240,0.88);
+      }
+
+      [data-theme="dark"] {
+        --surface:         #121826;
+        --surface-low:     #1a2236;
+        --surface-lowest:  #202b40;
+        --on-surface:      #e8e4de;
+        --on-surface-var:  #9ea3b0;
+        --primary:         #52b788;
+        --primary-dim:     #40916c;
+        --accent:          #d4af37;
+        --accent-dim:      #b8991f;
+        --outline:         rgba(232,228,222,0.10);
+        --outline-ghost:   rgba(232,228,222,0.06);
+        --on-primary:      #122010;
+        --shimmer-a:       #1a2236;
+        --shimmer-b:       #202b40;
+        --shadow:          rgba(0,0,0,0.30);
+        --nav-bg:          rgba(18,24,38,0.92);
+      }
+
+      [data-theme="sepia"] {
+        --surface:         #fbf8f1;
+        --surface-low:     #f5efe3;
+        --surface-lowest:  #fffdf8;
+        --on-surface:      #2c2416;
+        --on-surface-var:  #5c4d35;
+        --primary:         #6b4226;
+        --primary-dim:     #8b5e3c;
+        --accent:          #d4af37;
+        --accent-dim:      #b8991f;
+        --outline:         rgba(44,36,22,0.12);
+        --outline-ghost:   rgba(44,36,22,0.07);
+        --on-primary:      #ffffff;
+        --shimmer-a:       #ede6d6;
+        --shimmer-b:       #fbf8f1;
+        --shadow:          rgba(44,36,22,0.08);
+        --nav-bg:          rgba(251,248,241,0.88);
+      }
+
+      /* ── Reset & Base ──────────────────────────────────────────────────── */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--surface);
+        color: var(--on-surface);
+        font-family: 'DM Sans', sans-serif;
+        min-height: 100dvh;
+        -webkit-font-smoothing: antialiased;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      #root {
+        min-height: 100dvh;
+      }
+
+      /* ── Font size scale ───────────────────────────────────────────────── */
+      [data-font-size="sm"]  { font-size: 14px; }
+      [data-font-size="md"]  { font-size: 16px; }
+      [data-font-size="lg"]  { font-size: 18px; }
+      [data-font-size="xl"]  { font-size: 20px; }
+
+      /* Font family toggle */
+      [data-font-family="serif"] body,
+      [data-font-family="serif"] .reader-body {
+        font-family: 'Merriweather', Georgia, serif;
+      }
+
+      /* ── Animations ────────────────────────────────────────────────────── */
+      @keyframes pageFade {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0);   }
+      }
+
+      @keyframes shimmer {
+        from { background-position: -600px 0; }
+        to   { background-position:  600px 0; }
+      }
+
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0);    }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+
+      @keyframes toastIn {
+        from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+        to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+      }
+
+      /* ── Scrollbar ─────────────────────────────────────────────────────── */
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: var(--outline); border-radius: 4px; }
+
+      /* ── Selection ─────────────────────────────────────────────────────── */
+      ::selection {
+        background: var(--primary);
+        color: var(--on-primary);
+      }
+
+      /* ── Focus styles ──────────────────────────────────────────────────── */
+      :focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      /* ── Utility ───────────────────────────────────────────────────────── */
+      textarea { resize: vertical; }
+      button { cursor: pointer; }
+      a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
