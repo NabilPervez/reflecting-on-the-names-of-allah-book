@@ -10,7 +10,7 @@ import { pageWrap, textarea, label, primaryBtn, ghostBtn, skeletonLine } from ".
 import HTMLFlipBook from 'react-pageflip';
 
 // ── Chapter body renderer ─────────────────────────────────────────────────────
-function ChapterBody({ chapter }) {
+function ChapterBody({ chapter, isDesktop }) {
   // Filter out any pages that might be undefined or zero if they exist
   const pages = chapter.pages || [];
   
@@ -20,51 +20,53 @@ function ChapterBody({ chapter }) {
 
   return (
     <div>
-      {/* Header */}
-      <div
-        style={{
-          background: "linear-gradient(135deg, var(--primary) 0%, var(--primary-dim) 100%)",
-          borderRadius: 16,
-          padding: "28px 24px",
-          marginBottom: 24,
-          color: "var(--on-primary)",
-        }}
-      >
+      {/* Header - Hidden on mobile */}
+      {isDesktop && (
         <div
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            opacity: 0.75,
-            marginBottom: 8,
+            background: "linear-gradient(135deg, var(--primary) 0%, var(--primary-dim) 100%)",
+            borderRadius: 16,
+            padding: "28px 24px",
+            marginBottom: 24,
+            color: "var(--on-primary)",
           }}
         >
-          Chapter {String(chapter.number).padStart(2, "0")}
+          <div
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              opacity: 0.75,
+              marginBottom: 8,
+            }}
+          >
+            Chapter {String(chapter.number).padStart(2, "0")}
+          </div>
+          <h2
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: 28,
+              fontWeight: 700,
+              lineHeight: 1.2,
+              marginBottom: 8,
+            }}
+          >
+            {chapter.title}
+          </h2>
+          <div
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 13,
+              opacity: 0.85,
+              fontStyle: "italic",
+            }}
+          >
+            {chapter.arabicName} · {chapter.translation}
+          </div>
         </div>
-        <h2
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 28,
-            fontWeight: 700,
-            lineHeight: 1.2,
-            marginBottom: 8,
-          }}
-        >
-          {chapter.title}
-        </h2>
-        <div
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 13,
-            opacity: 0.85,
-            fontStyle: "italic",
-          }}
-        >
-          {chapter.arabicName} · {chapter.translation}
-        </div>
-      </div>
+      )}
 
       {/* Body FlipBook */}
       <div className="reader-body" style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
@@ -78,7 +80,7 @@ function ChapterBody({ chapter }) {
           maxHeight={650}
           maxShadowOpacity={0.5}
           showCover={false}
-          mobileScrollSupport={true}
+          mobileScrollSupport={false}
           style={{ margin: '0 auto' }}
         >
           {pages.map((p) => (
@@ -448,7 +450,7 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
         <>
           {/* Stacked Layout: Reading content followed by Reflection Panel (Desktop) */}
           <div style={{ marginBottom: 40 }}>
-            <ChapterBody chapter={chapter} />
+            <ChapterBody chapter={chapter} isDesktop={isDesktop} />
           </div>
 
           <div
@@ -515,7 +517,7 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
           </div>
 
           {activeView === "read" ? (
-            <ChapterBody chapter={chapter} />
+            <ChapterBody chapter={chapter} isDesktop={isDesktop} />
           ) : (
             <ReflectionPanel chapter={chapter} showToast={showToast} />
           )}
