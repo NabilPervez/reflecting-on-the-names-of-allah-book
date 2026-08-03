@@ -209,10 +209,10 @@ export default function IndexTab({ chapters, onOpenChapter }) {
             marginBottom: 6,
           }}
         >
-          Jinan Yousef · Virtualmosque.com
+          Jinan Yousef
         </div>
         <h1 style={{ ...pageTitle, fontSize: 32, marginBottom: 8 }}>
-          Names of Allah
+          Reflecting On The Names of Allah
         </h1>
         <p style={pageSubtitle}>
           {loading ? "Loading progress…" : `${reflectedCount} of ${total} chapters reflected upon`}

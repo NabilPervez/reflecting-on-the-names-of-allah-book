@@ -1,8 +1,8 @@
 [
   {
-    "id": "al-had-al-rashid-the-guide-i-2",
+    "id": "al-hadi-al-rashid-the-guide",
     "number": 1,
-    "title": "AL-HAD!, AL-RASHID - THE GUIDE",
+    "title": "Al-Hadi, Al-Rashid – The Guide",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -19,7 +19,17 @@
       39,
       40,
       41,
-      42,
+      42
+    ]
+  },
+  {
+    "id": "al-rabb-the-lord",
+    "number": 2,
+    "title": "Al-Rabb – The Lord",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
       43,
       44,
       45,
@@ -28,14 +38,13 @@
       48,
       49,
       50,
-      51,
-      52
+      51
     ]
   },
   {
-    "id": "mercy-4-6",
-    "number": 2,
-    "title": "MERCY",
+    "id": "al-rahman-al-rahim-al-ra-uf-mercy",
+    "number": 3,
+    "title": "Al-Rahman, Al-Rahim, Al-Ra'uf – Mercy",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -50,14 +59,13 @@
       59,
       60,
       61,
-      62,
-      63
+      62
     ]
   },
   {
-    "id": "true-and-complete-sovereignty-7-9",
-    "number": 3,
-    "title": "TRUE AND COMPLETE SOVEREIGNTY",
+    "id": "al-malik-al-maalik-malik-al-mulk-true-and-complete-sovereignty",
+    "number": 4,
+    "title": "Al-Malik, Al-Maalik, Malik Al-Mulk – True And Complete Sovereignty",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -69,14 +77,13 @@
       67,
       68,
       69,
-      70,
-      71
+      70
     ]
   },
   {
-    "id": "al-razzaq-the-provider-10",
-    "number": 4,
-    "title": "AL-RAZZAQ - THE PROVIDER",
+    "id": "al-razzaq-the-provider",
+    "number": 5,
+    "title": "Al-Razzaq – The Provider",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -93,14 +100,13 @@
       80,
       81,
       82,
-      83,
-      84
+      83
     ]
   },
   {
-    "id": "of-gifts-ii",
-    "number": 5,
-    "title": "OF GIFTS",
+    "id": "al-wahhab-the-bestower-of-gifts",
+    "number": 6,
+    "title": "Al-Wahhab – The Bestower Of Gifts",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -109,14 +115,13 @@
       85,
       86,
       87,
-      88,
-      89
+      88
     ]
   },
   {
-    "id": "equity-12-13",
-    "number": 6,
-    "title": "EQUITY",
+    "id": "al-adl-al-muqsit-justice-and-equity",
+    "number": 7,
+    "title": "Al-'Adl, Al-Muqsit – Justice And Equity",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -131,14 +136,13 @@
       96,
       97,
       98,
-      99,
-      100
+      99
     ]
   },
   {
-    "id": "giving-14",
-    "number": 7,
-    "title": "GIVING",
+    "id": "al-shakur-appreciation-and-giving",
+    "number": 8,
+    "title": "Al-Shakur – Appreciation And Giving",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -152,31 +156,29 @@
       106,
       107,
       108,
-      109
+      109,
+      110
     ]
   },
   {
-    "id": "holy-the-pure-15",
-    "number": 8,
-    "title": "一 HOLY, THE PURE",
+    "id": "al-quddus-unimagining-god-the-holy-the-pure",
+    "number": 9,
+    "title": "Al-Quddus – Unimagining God: The Holy, The Pure",
     "arabicName": "",
     "translation": "",
     "body": [],
     "pages": [
-      109,
-      110,
       111,
       112,
       113,
       114,
-      115,
-      116
+      115
     ]
   },
   {
-    "id": "al-salam-peace-16",
-    "number": 9,
-    "title": "AL-SALAM - PEACE",
+    "id": "al-salam-peace",
+    "number": 10,
+    "title": "Al-Salam – Peace",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -190,17 +192,59 @@
       122,
       123,
       124,
-      125
+      125,
+      126,
+      127
     ]
   },
   {
-    "id": "al-mu-min-security-17",
-    "number": 10,
-    "title": "AL-MU，MIN - SECURITY",
+    "id": "al-mu-min-security",
+    "number": 11,
+    "title": "Al-Mu'min – Security",
     "arabicName": "",
     "translation": "",
     "body": [],
     "pages": [
+      128,
+      129,
+      130,
+      131,
+      132
+    ]
+  },
+  {
+    "id": "al-muhaymin-complete-control",
+    "number": 12,
+    "title": "Al-Muhaymin – Complete Control",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": []
+  },
+  {
+    "id": "al-aziz-strength-from-dignity",
+    "number": 13,
+    "title": "Al-'Aziz – Strength From Dignity",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
       125,
       126,
       127,
@@ -209,33 +253,11 @@
       130,
       131,
       132,
-      133
-    ]
-  },
-  {
-    "id": "control-18",
-    "number": 11,
-    "title": "CONTROL",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       133,
       134,
       135,
       136,
       137,
-      138
-    ]
-  },
-  {
-    "id": "dignity-i9",
-    "number": 12,
-    "title": "DIGNITY",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       138,
       139,
       140,
@@ -244,14 +266,13 @@
       143,
       144,
       145,
-      146,
-      147
+      146
     ]
   },
   {
-    "id": "mending-the-broken-20",
-    "number": 13,
-    "title": "MENDING THE BROKEN",
+    "id": "al-jabbar-the-compeller-mending-the-broken",
+    "number": 14,
+    "title": "Al-Jabbar – The Compeller, Mending The Broken",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -261,14 +282,13 @@
       149,
       150,
       151,
-      152,
-      153
+      152
     ]
   },
   {
-    "id": "god-is-greater-21-22",
-    "number": 14,
-    "title": "GOD IS GREATER",
+    "id": "al-kabir-al-mutakabbir-god-is-greater",
+    "number": 15,
+    "title": "Al-Kabir, Al-Mutakabbir – God Is Greater",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -280,7 +300,17 @@
       157,
       158,
       159,
-      160,
+      160
+    ]
+  },
+  {
+    "id": "al-khaliq-al-bari-al-musawwir-creating-innovating-fashioning",
+    "number": 16,
+    "title": "Al-Khaliq, Al-Bari', Al-Musawwir – Creating, Innovating, Fashioning",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
       161,
       162,
       163,
@@ -289,14 +319,13 @@
       166,
       167,
       168,
-      169,
-      170
+      169
     ]
   },
   {
-    "id": "subtle-and-kind-26-27",
-    "number": 15,
-    "title": "SUBTLE AND KIND",
+    "id": "al-latif-al-rafiq-subtle-and-kind",
+    "number": 17,
+    "title": "Al-Latif, Al-Rafiq – Subtle And Kind",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -305,14 +334,13 @@
       171,
       172,
       173,
-      174,
-      175
+      174
     ]
   },
   {
-    "id": "the-one-and-only-28-29",
-    "number": 16,
-    "title": "THE ONE AND ONLY",
+    "id": "al-wahid-al-ahad-the-one-and-only",
+    "number": 18,
+    "title": "Al-Wahid, Al-Ahad – The One And Only",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -325,18 +353,56 @@
       180,
       181,
       182,
-      183,
-      184
+      183
     ]
   },
   {
-    "id": "refuge-30",
-    "number": 17,
-    "title": "一 REFUGE",
+    "id": "al-samad-refuge",
+    "number": 19,
+    "title": "Al-Samad – Refuge",
     "arabicName": "",
     "translation": "",
     "body": [],
     "pages": [
+      184,
+      185,
+      186,
+      187,
+      188
+    ]
+  },
+  {
+    "id": "al-qahir-al-qahhar-domination",
+    "number": 20,
+    "title": "Al-Qahir, Al-Qahhar – Domination",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": []
+  },
+  {
+    "id": "al-qarib-al-mujib-closer-to-you-than-yourself",
+    "number": 21,
+    "title": "Al-Qarib, Al-Mujib – Closer To You Than Yourself",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
       184,
       185,
       186,
@@ -351,17 +417,6 @@
       195,
       196,
       197,
-      198
-    ]
-  },
-  {
-    "id": "than-yourself-33-34",
-    "number": 18,
-    "title": "THAN YOURSELF",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       198,
       199,
       200,
@@ -376,14 +431,13 @@
       209,
       210,
       211,
-      212,
-      213
+      212
     ]
   },
   {
-    "id": "al-tawwab-turning-back-35",
-    "number": 19,
-    "title": "AL-TAWWAB - TURNING BACK",
+    "id": "al-tawwab-turning-back",
+    "number": 22,
+    "title": "Al-Tawwab – Turning Back",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -396,18 +450,43 @@
       218,
       219,
       220,
-      221,
-      222
+      221
     ]
   },
   {
-    "id": "forgiveness-36-38",
-    "number": 20,
-    "title": "FORGIVENESS",
+    "id": "ghafir-al-dhanb-al-ghafur-al-ghaffar-god-s-cover-of-forgiveness",
+    "number": 23,
+    "title": "Ghafir Al-Dhanb, Al-Ghafur, Al-Ghaffar – God's Cover Of Forgiveness",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": []
+  },
+  {
+    "id": "al-alim-al-hakim-al-khabir-alim-al-ghayb-wa-al-shahadah-the-all-knowing-the-most-wise-the-all-aware-knower-of-the-unseen-and-the-witnessed",
+    "number": 24,
+    "title": "Al-'Alim, Al-Hakim, Al-Khabir, 'Alim Al-Ghayb Wa Al-Shahadah – The All-Knowing, The Most Wise, The All-Aware, Knower Of The Unseen And The Witnessed",
     "arabicName": "",
     "translation": "",
     "body": [],
     "pages": [
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
       222,
       223,
       224,
@@ -420,17 +499,6 @@
       231,
       232,
       233,
-      234
-    ]
-  },
-  {
-    "id": "the-witnessed-39-42",
-    "number": 21,
-    "title": "THE WITNESSED",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       234,
       235,
       236,
@@ -445,14 +513,13 @@
       245,
       246,
       247,
-      248,
-      249
+      248
     ]
   },
   {
-    "id": "al-hakam-the-judge-43",
-    "number": 22,
-    "title": "AL-HAKAM - THE JUDGE",
+    "id": "al-hakam-the-judge",
+    "number": 25,
+    "title": "Al-Hakam – The Judge",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -471,14 +538,13 @@
       260,
       261,
       262,
-      263,
-      264
+      263
     ]
   },
   {
-    "id": "high-above-the-greatest-44-47",
-    "number": 23,
-    "title": "HIGH ABOVE, THE GREATEST",
+    "id": "al-aliyy-al-a-la-al-muta-ali-al-azim-the-high-the-most-high-the-high-above-the-greatest",
+    "number": 26,
+    "title": "Al-'Aliyy, Al-A'la, Al-Muta'ali, Al-'Azim – The High, The Most High, The High Above, The Greatest",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -491,14 +557,13 @@
       269,
       270,
       271,
-      272,
-      273
+      272
     ]
   },
   {
-    "id": "al-hayiyy-al-slttlr-grace-48-49",
-    "number": 24,
-    "title": "AL-HAYIYY AL-SlTTlR - GRACE",
+    "id": "al-hayiyy-al-sittir-grace",
+    "number": 27,
+    "title": "Al-Hayiyy, Al-Sittir – Grace",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -513,14 +578,13 @@
       280,
       281,
       282,
-      283,
-      284
+      283
     ]
   },
   {
-    "id": "the-sustainer-50-51",
-    "number": 25,
-    "title": "THE SUSTAINER",
+    "id": "al-hayy-al-qayyum-the-living-the-sustainer",
+    "number": 28,
+    "title": "Al-Hayy, Al-Qayyum – The Living, The Sustainer",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -529,14 +593,13 @@
       285,
       286,
       287,
-      288,
-      289
+      288
     ]
   },
   {
-    "id": "glory-52-53",
-    "number": 26,
-    "title": "GLORY",
+    "id": "al-hamid-al-majid-praise-and-glory",
+    "number": 29,
+    "title": "Al-Hamid, Al-Majid – Praise And Glory",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -548,18 +611,65 @@
       293,
       294,
       295,
-      296,
-      297
+      296
     ]
   },
   {
-    "id": "generosity-54-55",
-    "number": 27,
-    "title": "GENEROSITY",
+    "id": "al-karim-al-akram-limitless-generosity",
+    "number": 30,
+    "title": "Al-Karim, Al-Akram – Limitless Generosity",
     "arabicName": "",
     "translation": "",
     "body": [],
     "pages": [
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305
+    ]
+  },
+  {
+    "id": "al-nur-the-light",
+    "number": 31,
+    "title": "Al-Nur – The Light",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": []
+  },
+  {
+    "id": "al-halim-al-sabur-forbearance-and-patience",
+    "number": 32,
+    "title": "Al-Halim, Al-Sabur – Forbearance And Patience",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      277,
+      278,
+      279,
+      280,
+      281,
+      282,
+      283,
+      284,
+      285,
+      286,
+      287,
+      288,
+      289,
+      290,
+      291,
+      292,
+      293,
+      294,
+      295,
+      296,
       297,
       298,
       299,
@@ -576,17 +686,6 @@
       310,
       311,
       312,
-      313
-    ]
-  },
-  {
-    "id": "and-patience-57-58",
-    "number": 28,
-    "title": "AND PATIENCE",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       313,
       314,
       315,
@@ -602,14 +701,13 @@
       325,
       326,
       327,
-      328,
-      329
+      328
     ]
   },
   {
-    "id": "the-expender-59-60",
-    "number": 29,
-    "title": "THE EXPENDER",
+    "id": "al-qabid-al-basit-the-withholder-the-expander",
+    "number": 33,
+    "title": "Al-Qabid, Al-Basit – The Withholder, The Expander",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -623,14 +721,13 @@
       335,
       336,
       337,
-      338,
-      339
+      338
     ]
   },
   {
-    "id": "al-jami-the-uniter-61",
-    "number": 30,
-    "title": "AL-JAMI‘ 一 THE UNITER",
+    "id": "al-jami-the-uniter",
+    "number": 34,
+    "title": "Al-Jami' – The Uniter",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -644,13 +741,61 @@
       345,
       346,
       347,
-      348
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355
     ]
   },
   {
-    "id": "all-seeing-62-63",
-    "number": 31,
-    "title": "ALL-SEEING",
+    "id": "al-sami-al-basir-the-all-hearing-all-seeing",
+    "number": 35,
+    "title": "Al-Sami', Al-Basir – The All-Hearing, All-Seeing",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      356,
+      357,
+      358,
+      359,
+      360,
+      361
+    ]
+  },
+  {
+    "id": "al-raqib-al-shahid-the-all-observant-the-witness",
+    "number": 36,
+    "title": "Al-Raqib, Al-Shahid – The All-Observant, The Witness",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      362,
+      363,
+      364,
+      365,
+      366,
+      367
+    ]
+  },
+  {
+    "id": "al-haqq-the-truth",
+    "number": 37,
+    "title": "Al-Haqq – The Truth",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": []
+  },
+  {
+    "id": "al-jamil-the-beautiful",
+    "number": 38,
+    "title": "Al-Jamil – The Beautiful",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -669,34 +814,12 @@
       359,
       360,
       361,
-      362
-    ]
-  },
-  {
-    "id": "observant-the-witness-64-65",
-    "number": 32,
-    "title": "OBSERVANT, THE WITNESS",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       362,
       363,
       364,
       365,
       366,
       367,
-      368
-    ]
-  },
-  {
-    "id": "al-haqq-the-truth-66",
-    "number": 33,
-    "title": "AL-HAQQ - THE TRUTH",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       368,
       369,
       370,
@@ -706,17 +829,6 @@
       374,
       375,
       376,
-      377
-    ]
-  },
-  {
-    "id": "al-jamll-the-beautiful-67",
-    "number": 34,
-    "title": "AL-JAMlL - THE BEAUTIFUL",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       377,
       378,
       379,
@@ -730,13 +842,64 @@
     ]
   },
   {
-    "id": "the-affectionate-68",
-    "number": 35,
-    "title": "THE AFFECTIONATE",
+    "id": "al-wadud-the-loving-the-affectionate",
+    "number": 39,
+    "title": "Al-Wadud – The Loving, The Affectionate",
     "arabicName": "",
     "translation": "",
     "body": [],
     "pages": [
+      387,
+      388,
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401
+    ]
+  },
+  {
+    "id": "al-ghani-the-self-sufficient",
+    "number": 40,
+    "title": "Al-Ghani – The Self-Sufficient",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      402,
+      403,
+      404,
+      405,
+      406
+    ]
+  },
+  {
+    "id": "al-wasi-the-vast",
+    "number": 41,
+    "title": "Al-Wasi' – The Vast",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": []
+  },
+  {
+    "id": "al-hasib-the-accountant-the-sufficient",
+    "number": 42,
+    "title": "Al-Hasib – The Accountant, The Sufficient",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      384,
+      385,
       386,
       387,
       388,
@@ -750,17 +913,6 @@
       396,
       397,
       398,
-      399
-    ]
-  },
-  {
-    "id": "al-ghant-the-self-sufficient-69",
-    "number": 36,
-    "title": "AL-GHANT - THE SELF-SUFFICIENT",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       399,
       400,
       401,
@@ -769,17 +921,6 @@
       404,
       405,
       406,
-      407
-    ]
-  },
-  {
-    "id": "al-wasi-the-vast-70",
-    "number": 37,
-    "title": "AL-WASI‘ - THE VAST",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       407,
       408,
       409,
@@ -793,14 +934,13 @@
       417,
       418,
       419,
-      420,
-      421
+      420
     ]
   },
   {
-    "id": "the-overpowering-72-74",
-    "number": 38,
-    "title": "THE OVERPOWERING",
+    "id": "al-qadir-al-qadir-al-muqtadir-the-most-powerful-the-most-able-the-overpowering",
+    "number": 43,
+    "title": "Al-Qadir, Al-Qadir, Al-Muqtadir – The Most Powerful, The Most Able, The Overpowering",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -812,20 +952,29 @@
       425,
       426,
       427,
-      428,
+      428
+    ]
+  },
+  {
+    "id": "al-jawad-al-mannan-the-magnanimous-the-bestower",
+    "number": 44,
+    "title": "Al-Jawad, Al-Mannan – The Magnanimous, The Bestower",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
       429,
       430,
       431,
       432,
       433,
-      434,
-      435
+      434
     ]
   },
   {
-    "id": "the-championer-77-78",
-    "number": 39,
-    "title": "THE CHAMPIONER",
+    "id": "al-nasir-al-ghalib-the-helper-the-championer",
+    "number": 45,
+    "title": "Al-Nasir, Al-Ghalib – The Helper, The Championer",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -838,14 +987,13 @@
       440,
       441,
       442,
-      443,
-      444
+      443
     ]
   },
   {
-    "id": "things-79",
-    "number": 40,
-    "title": "THINGS",
+    "id": "al-fattah-he-who-opens-all-things",
+    "number": 46,
+    "title": "Al-Fattah – He Who Opens All Things",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -857,14 +1005,13 @@
       448,
       449,
       450,
-      451,
-      452
+      451
     ]
   },
   {
-    "id": "the-guardian-ally-80-81",
-    "number": 41,
-    "title": "THE GUARDIAN ALLY",
+    "id": "al-waliyy-al-mawla-the-guardian-ally",
+    "number": 47,
+    "title": "Al-Waliyy, Al-Mawla – The Guardian Ally",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -875,14 +1022,13 @@
       455,
       456,
       457,
-      458,
-      459
+      458
     ]
   },
   {
-    "id": "al-afuww-the-pardoner-82",
-    "number": 42,
-    "title": "AL-‘AFUWW — THE PARDONER",
+    "id": "al-afuww-the-pardoner",
+    "number": 48,
+    "title": "Al-'Afuww – The Pardoner",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -891,7 +1037,17 @@
       460,
       461,
       462,
-      463,
+      463
+    ]
+  },
+  {
+    "id": "al-wakil-the-trustee",
+    "number": 49,
+    "title": "Al-Wakil – The Trustee",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
       464,
       465,
       466,
@@ -899,14 +1055,13 @@
       468,
       469,
       470,
-      471,
-      472
+      471
     ]
   },
   {
-    "id": "delays-84-85",
-    "number": 43,
-    "title": "DELAYS",
+    "id": "al-muqaddim-al-mu-akhkhir-he-who-brings-forward-he-who-delays",
+    "number": 50,
+    "title": "Al-Muqaddim, Al-Mu'akhkhir – He Who Brings Forward, He Who Delays",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -920,14 +1075,13 @@
     ]
   },
   {
-    "id": "powerful-the-firm-86-89",
-    "number": 44,
-    "title": "POWERFUL, THE FIRM",
+    "id": "al-hafiz-al-mani-al-qawiyy-al-matin-the-preserver-the-preventer-of-harm-the-all-powerful-the-firm",
+    "number": 51,
+    "title": "Al-Hafiz, Al-Mani', Al-Qawiyy, Al-Matin – The Preserver, The Preventer Of Harm, The All-Powerful, The Firm",
     "arabicName": "",
     "translation": "",
     "body": [],
     "pages": [
-      477,
       478,
       479,
       480,
@@ -936,14 +1090,13 @@
       483,
       484,
       485,
-      486,
-      487
+      486
     ]
   },
   {
-    "id": "manifest-the-hidden-90-93",
-    "number": 45,
-    "title": "MANIFEST, THE HIDDEN",
+    "id": "al-awwal-al-akhir-al-zahir-al-batin-the-first-the-last-the-manifest-the-hidden",
+    "number": 52,
+    "title": "Al-Awwal, Al-Akhir, Al-Zahir, Al-Batin – The First, The Last, The Manifest, The Hidden",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -958,17 +1111,6 @@
       494,
       495,
       496,
-      497
-    ]
-  },
-  {
-    "id": "al-war1th-the-inheritor-94",
-    "number": 46,
-    "title": "AL-WAR1TH - THE INHERITOR",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       497,
       498,
       499,
@@ -980,17 +1122,6 @@
       505,
       506,
       507,
-      508
-    ]
-  },
-  {
-    "id": "al-shafl-the-healer-96",
-    "number": 47,
-    "title": "AL-SHAFl - THE HEALER",
-    "arabicName": "",
-    "translation": "",
-    "body": [],
-    "pages": [
       508,
       509,
       510,
@@ -999,13 +1130,81 @@
       513,
       514,
       515,
-      516
+      516,
+      517,
+      518,
+      519,
+      520,
+      521,
+      522,
+      523,
+      524,
+      525,
+      526,
+      527,
+      528,
+      529,
+      530,
+      531,
+      532,
+      533,
+      534,
+      535,
+      536,
+      537,
+      538,
+      539,
+      540,
+      541,
+      542
     ]
   },
   {
-    "id": "the-beneficent-97-99",
-    "number": 48,
-    "title": "THE BENEFICENT",
+    "id": "al-warith-the-inheritor",
+    "number": 53,
+    "title": "Al-Warith – The Inheritor",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": []
+  },
+  {
+    "id": "al-mubin-the-evident",
+    "number": 54,
+    "title": "Al-Mubin – The Evident",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      503,
+      504,
+      505,
+      506,
+      507,
+      508,
+      509
+    ]
+  },
+  {
+    "id": "al-shafi-the-healer",
+    "number": 55,
+    "title": "Al-Shafi – The Healer",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
+      510,
+      511,
+      512,
+      513,
+      514,
+      515
+    ]
+  },
+  {
+    "id": "al-barr-al-tayyib-al-muhsin-the-doer-of-good-the-good-the-beneficent",
+    "number": 56,
+    "title": "Al-Barr, Al-Tayyib, Al-Muhsin – The Doer Of Good, The Good, The Beneficent",
     "arabicName": "",
     "translation": "",
     "body": [],
@@ -1040,7 +1239,17 @@
       543,
       544,
       545,
-      546,
+      546
+    ]
+  },
+  {
+    "id": "allah",
+    "number": 57,
+    "title": "Allah",
+    "arabicName": "",
+    "translation": "",
+    "body": [],
+    "pages": [
       547,
       548,
       549,
