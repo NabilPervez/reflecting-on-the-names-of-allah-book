@@ -78,6 +78,13 @@ export default function App() {
   const [activeChapter, setActiveChapter] = useState(null);
   const [toast,      setToast]      = useState(null);
   const [firstVisit, setFirstVisit] = useState(false);
+  const [isDesktop,  setIsDesktop]  = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Persistent settings
   const [theme,      setTheme]      = useState(() => localStorage.getItem("noa_theme")      || "system");
@@ -186,6 +193,8 @@ export default function App() {
           maxWidth: 900,
           margin: "0 auto",
           position: "relative",
+          paddingLeft: isDesktop ? 80 : 0,
+          paddingBottom: isDesktop ? 0 : 72,
         }}
       >
         <div

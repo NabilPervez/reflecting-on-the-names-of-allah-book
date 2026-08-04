@@ -32,65 +32,19 @@ function ChapterBody({ chapter, isDesktop, initialPage, onPageChange }) {
 
   return (
     <div>
-      {/* Header - Hidden on mobile */}
-      {isDesktop && (
-        <div
-          style={{
-            background: "linear-gradient(135deg, var(--primary) 0%, var(--primary-dim) 100%)",
-            borderRadius: 16,
-            padding: "28px 24px",
-            marginBottom: 24,
-            color: "var(--on-primary)",
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              opacity: 0.75,
-              marginBottom: 8,
-            }}
-          >
-            Chapter {String(chapter.number).padStart(2, "0")}
-          </div>
-          <h2
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 28,
-              fontWeight: 700,
-              lineHeight: 1.2,
-              marginBottom: 8,
-            }}
-          >
-            {chapter.title}
-          </h2>
-          <div
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 13,
-              opacity: 0.85,
-              fontStyle: "italic",
-            }}
-          >
-            {chapter.arabicName} · {chapter.translation}
-          </div>
-        </div>
-      )}
+
 
       {/* Body FlipBook */}
-      <div className="reader-body" style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
+      <div className="reader-body" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 40 }}>
         <HTMLFlipBook
           ref={flipBookRef}
           width={350}
           height={500}
           size="stretch"
           minWidth={280}
-          maxWidth={450}
+          maxWidth={isDesktop ? 1000 : 450}
           minHeight={400}
-          maxHeight={650}
+          maxHeight={isDesktop ? 1428 : 650}
           maxShadowOpacity={0.5}
           showCover={false}
           mobileScrollSupport={false}
@@ -107,6 +61,40 @@ function ChapterBody({ chapter, isDesktop, initialPage, onPageChange }) {
             </div>
           ))}
         </HTMLFlipBook>
+
+        {/* Page Turn Controls */}
+        <div style={{ display: 'flex', gap: 24, marginTop: 20 }}>
+          <button
+            onClick={() => flipBookRef.current?.pageFlip().flipPrev()}
+            style={{
+              padding: "10px 20px",
+              background: "var(--primary)",
+              color: "var(--on-primary)",
+              border: "none",
+              borderRadius: 8,
+              cursor: "pointer",
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 600,
+            }}
+          >
+            ← Previous
+          </button>
+          <button
+            onClick={() => flipBookRef.current?.pageFlip().flipNext()}
+            style={{
+              padding: "10px 20px",
+              background: "var(--primary)",
+              color: "var(--on-primary)",
+              border: "none",
+              borderRadius: 8,
+              cursor: "pointer",
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 600,
+            }}
+          >
+            Next →
+          </button>
+        </div>
       </div>
     </div>
   );

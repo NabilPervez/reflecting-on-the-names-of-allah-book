@@ -1,5 +1,14 @@
 // Bottom navigation bar
+import { useState, useEffect } from "react";
+
 export default function BottomNav({ tab, setTab }) {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const tabs = [
     { id: "index",    label: "Index",    icon: "☰" },
     { id: "reader",   label: "Read",     icon: "✦" },
@@ -9,7 +18,22 @@ export default function BottomNav({ tab, setTab }) {
 
   return (
     <nav
-      style={{
+      style={isDesktop ? {
+        position: "fixed",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        width: 80,
+        background: "var(--nav-bg, rgba(248,245,240,0.88))",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 200,
+        borderRight: "1px solid var(--outline-ghost)",
+      } : {
         position: "fixed",
         bottom: 0,
         left: 0,
@@ -32,7 +56,8 @@ export default function BottomNav({ tab, setTab }) {
           aria-label={t.label}
           onClick={() => setTab(t.id)}
           style={{
-            flex: 1,
+            flex: isDesktop ? "none" : 1,
+            width: "100%",
             background: "none",
             border: "none",
             cursor: "pointer",
@@ -40,7 +65,7 @@ export default function BottomNav({ tab, setTab }) {
             flexDirection: "column",
             alignItems: "center",
             gap: 4,
-            padding: "10px 0",
+            padding: isDesktop ? "20px 0" : "10px 0",
           }}
         >
           <span
