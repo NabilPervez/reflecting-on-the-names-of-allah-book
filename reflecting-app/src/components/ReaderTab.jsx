@@ -441,6 +441,33 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
           </div>
         </div>
 
+        {!isDesktop && (
+          <div style={{ display: 'flex', gap: 4, background: 'var(--surface-lowest)', borderRadius: 10, padding: 4, border: '1px solid var(--outline-ghost)' }}>
+            {["read", "reflect"].map((v) => (
+              <button
+                key={v}
+                onClick={() => setActiveView(v)}
+                title={v === "read" ? "Read" : "Reflect"}
+                style={{
+                  padding: "6px",
+                  borderRadius: 8,
+                  border: "none",
+                  background: activeView === v ? "var(--primary)" : "transparent",
+                  color: activeView === v ? "var(--on-primary)" : "var(--on-surface-var)",
+                  cursor: "pointer",
+                  fontSize: 14,
+                  lineHeight: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {v === "read" ? "✦" : "✴"}
+              </button>
+            ))}
+          </div>
+        )}
+
         <button
           onClick={toggleBookmark}
           title={isBookmarked ? "Remove bookmark" : "Bookmark"}
@@ -499,41 +526,6 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
         </>
       ) : (
         <>
-          {/* Mobile tab toggle */}
-          <div
-            style={{
-              display: "flex",
-              background: "var(--surface-lowest)",
-              borderRadius: 12,
-              padding: 4,
-              marginBottom: 22,
-              border: "1px solid var(--outline-ghost)",
-            }}
-          >
-            {["read", "reflect"].map((v) => (
-              <button
-                key={v}
-                onClick={() => setActiveView(v)}
-                style={{
-                  flex: 1,
-                  padding: "9px 0",
-                  borderRadius: 9,
-                  border: "none",
-                  background: activeView === v ? "var(--primary)" : "transparent",
-                  color: activeView === v ? "var(--on-primary)" : "var(--on-surface-var)",
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  textTransform: "capitalize",
-                }}
-              >
-                {v === "read" ? "✦ Read" : "✴ Reflect"}
-              </button>
-            ))}
-          </div>
-
           {activeView === "read" ? (
             <ChapterBody 
               chapter={chapter} 

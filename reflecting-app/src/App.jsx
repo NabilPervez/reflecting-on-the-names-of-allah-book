@@ -194,7 +194,7 @@ export default function App() {
           margin: "0 auto",
           position: "relative",
           paddingLeft: isDesktop ? 80 : 0,
-          paddingBottom: isDesktop ? 0 : 72,
+          paddingBottom: isDesktop ? 0 : (tab === "reader" ? 0 : 72),
         }}
       >
         <div
@@ -236,7 +236,7 @@ export default function App() {
           </ErrorBoundary>
         </div>
 
-        <BottomNav tab={tab} setTab={setTab} />
+        {!(tab === "reader" && !isDesktop) && <BottomNav tab={tab} setTab={setTab} />}
       </div>
 
       {/* PWA Install Prompt */}
