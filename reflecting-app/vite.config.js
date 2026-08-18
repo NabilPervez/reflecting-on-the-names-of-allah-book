@@ -15,7 +15,7 @@ export default defineConfig({
           "Read and reflect on Jinan Yousef's book Reflecting on the Names of Allah. Save personal notes, action items, and du'as — all stored privately on your device.",
         theme_color: "#1b4332",
         background_color: "#f8f5f0",
-        display: "fullscreen",
+        display: "standalone",
         orientation: "portrait",
         start_url: "/",
         icons: [
