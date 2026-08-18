@@ -5,6 +5,7 @@ import {
   dbToggleBookmark,
   dbGetAllBookmarks,
   dbGetBookmark,
+  dbUpdateBookmarkPage,
 } from "../lib/db.js";
 import { pageWrap, textarea, label, primaryBtn, ghostBtn, skeletonLine } from "../lib/styles.js";
 
@@ -12,9 +13,14 @@ import HTMLFlipBook from 'react-pageflip';
 
 // ── Chapter body renderer ─────────────────────────────────────────────────────
 function ChapterBody({ chapter, isDesktop, initialPage, onPageChange }) {
-  // Filter out any pages that might be undefined or zero if they exist
   const pages = chapter.pages || [];
   const flipBookRef = useRef(null);
+
+  // Pinch-to-zoom state
+  const wrapperRef   = useRef(null);
+  const zoomRef      = useRef(1);
+  const originRef    = useRef({ x: 0, y: 0 });
+  const lastDistRef  = useRef(null);
 
   useEffect(() => {
     if (flipBookRef.current && initialPage > 0) {
@@ -25,42 +31,114 @@ function ChapterBody({ chapter, isDesktop, initialPage, onPageChange }) {
       }
     }
   }, [initialPage, pages.length]);
-  
+
+  // Pinch-to-zoom touch handlers
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    const getDistance = (t) =>
+      Math.hypot(t[1].clientX - t[0].clientX, t[1].clientY - t[0].clientY);
+
+    const getMidpoint = (t) => ({
+      x: (t[0].clientX + t[1].clientX) / 2,
+      y: (t[0].clientY + t[1].clientY) / 2,
+    });
+
+    const applyZoom = () => {
+      el.style.transformOrigin = `${originRef.current.x}px ${originRef.current.y}px`;
+      el.style.transform = `scale(${zoomRef.current})`;
+    };
+
+    const onTouchStart = (e) => {
+      if (e.touches.length === 2) {
+        lastDistRef.current = getDistance(e.touches);
+        const mid = getMidpoint(e.touches);
+        const rect = el.getBoundingClientRect();
+        originRef.current = { x: mid.x - rect.left, y: mid.y - rect.top };
+      }
+    };
+
+    const onTouchMove = (e) => {
+      if (e.touches.length === 2) {
+        e.preventDefault();
+        const dist = getDistance(e.touches);
+        if (lastDistRef.current) {
+          const delta = dist / lastDistRef.current;
+          zoomRef.current = Math.min(4, Math.max(1, zoomRef.current * delta));
+          applyZoom();
+        }
+        lastDistRef.current = dist;
+      }
+    };
+
+    const onTouchEnd = (e) => {
+      if (e.touches.length < 2) lastDistRef.current = null;
+      // Snap back to 1 if close
+      if (zoomRef.current < 1.05) {
+        zoomRef.current = 1;
+        el.style.transform = "scale(1)";
+      }
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove",  onTouchMove,  { passive: false });
+    el.addEventListener("touchend",   onTouchEnd,   { passive: true });
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove",  onTouchMove);
+      el.removeEventListener("touchend",   onTouchEnd);
+    };
+  }, []);
+
   if (pages.length === 0) {
     return <div style={{ padding: 20, textAlign: 'center' }}>No pages available for this chapter.</div>;
   }
 
   return (
     <div>
-
-
       {/* Body FlipBook */}
-      <div className="reader-body" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 40 }}>
-        <HTMLFlipBook
-          ref={flipBookRef}
-          width={350}
-          height={500}
-          size="stretch"
-          minWidth={280}
-          maxWidth={isDesktop ? 1000 : 450}
-          minHeight={400}
-          maxHeight={isDesktop ? 1428 : 650}
-          maxShadowOpacity={0.5}
-          showCover={false}
-          mobileScrollSupport={false}
-          style={{ margin: '0 auto' }}
-          onFlip={(e) => onPageChange(e.data)}
+      <div
+        className="reader-body"
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 40 }}
+      >
+        {/* Zoom wrapper */}
+        <div
+          ref={wrapperRef}
+          style={{
+            transformOrigin: '50% 50%',
+            transition: 'transform 0.05s linear',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
         >
-          {pages.map((p) => (
-            <div key={p} className="demoPage" style={{ backgroundColor: '#fff', boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
-              <img
-                src={`/pages/page_${p}.jpg`}
-                alt={`Page ${p}`}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
-          ))}
-        </HTMLFlipBook>
+          <HTMLFlipBook
+            ref={flipBookRef}
+            width={350}
+            height={500}
+            size="stretch"
+            minWidth={280}
+            maxWidth={isDesktop ? 1000 : 450}
+            minHeight={400}
+            maxHeight={isDesktop ? 1428 : 650}
+            maxShadowOpacity={0.5}
+            showCover={false}
+            mobileScrollSupport={false}
+            style={{ margin: '0 auto' }}
+            onFlip={(e) => onPageChange(e.data)}
+          >
+            {pages.map((p) => (
+              <div key={p} className="demoPage" style={{ backgroundColor: '#fff', boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
+                <img
+                  src={`/pages/page_${p}.jpg`}
+                  alt={`Page ${p}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+            ))}
+          </HTMLFlipBook>
+        </div>
 
         {/* Page Turn Controls */}
         <div style={{ display: 'flex', gap: 24, marginTop: 20 }}>
@@ -327,8 +405,8 @@ function ReflectionPanel({ chapter, showToast }) {
 }
 
 // ── Reader Tab ────────────────────────────────────────────────────────────────
-export default function ReaderTab({ chapter, onBack, showToast }) {
-  const [activeView, setActiveView] = useState("read"); // "read" | "reflect"
+export default function ReaderTab({ chapter, onBack, showToast, initialView = "read" }) {
+  const [activeView, setActiveView] = useState(initialView); // "read" | "reflect"
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [initialPage, setInitialPage] = useState(0);
@@ -350,6 +428,14 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
       }
     });
   }, [chapter?.id]);
+
+  // Auto-update bookmark page whenever the user flips while bookmarked
+  const handlePageChange = useCallback((pageIndex) => {
+    setCurrentPageIndex(pageIndex);
+    if (chapter && isBookmarked) {
+      dbUpdateBookmarkPage(chapter.id, pageIndex);
+    }
+  }, [chapter, isBookmarked]);
 
   const toggleBookmark = async () => {
     if (!chapter) return;
@@ -494,7 +580,7 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
               chapter={chapter} 
               isDesktop={isDesktop} 
               initialPage={initialPage} 
-              onPageChange={setCurrentPageIndex} 
+              onPageChange={handlePageChange} 
             />
           </div>
 
@@ -531,7 +617,7 @@ export default function ReaderTab({ chapter, onBack, showToast }) {
               chapter={chapter} 
               isDesktop={isDesktop} 
               initialPage={initialPage} 
-              onPageChange={setCurrentPageIndex} 
+              onPageChange={handlePageChange} 
             />
           ) : (
             <ReflectionPanel chapter={chapter} showToast={showToast} />

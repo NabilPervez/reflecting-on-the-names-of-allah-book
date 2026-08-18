@@ -76,6 +76,7 @@ export default function App() {
   const [tab,        setTab]        = useState("index");
   const [chapters,   setChapters]   = useState(null);
   const [activeChapter, setActiveChapter] = useState(null);
+  const [readerInitialView, setReaderInitialView] = useState("read");
   const [toast,      setToast]      = useState(null);
   const [firstVisit, setFirstVisit] = useState(false);
   const [isDesktop,  setIsDesktop]  = useState(window.innerWidth >= 768);
@@ -169,15 +170,16 @@ export default function App() {
   };
 
   // ── Navigation helpers ──────────────────────────────────────────────────────
-  const handleOpenChapter = (ch) => {
+  const handleOpenChapter = (ch, initialView = "read") => {
     setActiveChapter(ch);
+    setReaderInitialView(initialView);
     setTab("reader");
   };
 
   const goToChapterById = (nameId) => {
     if (!chapters) return;
     const ch = chapters.find((c) => c.id === nameId);
-    if (ch) handleOpenChapter(ch);
+    if (ch) handleOpenChapter(ch, "reflect");
   };
 
   const showToast = (msg, type = "success") =>
@@ -211,6 +213,7 @@ export default function App() {
             {tab === "reader" && (
               <ReaderTab
                 chapter={activeChapter}
+                initialView={readerInitialView}
                 onBack={() => setTab("index")}
                 showToast={showToast}
               />

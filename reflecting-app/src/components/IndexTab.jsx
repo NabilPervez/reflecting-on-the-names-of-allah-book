@@ -63,30 +63,55 @@ function NameCard({ chapter, hasReflection, isBookmarked, onOpen }) {
 
       {/* Text */}
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 600,
-            fontSize: 17,
-            color: "var(--on-surface)",
-            marginBottom: 2,
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {chapter.title}
-        </div>
-        <div
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 12,
-            color: "var(--on-surface-var)",
-            fontStyle: "italic",
-          }}
-        >
-          {chapter.arabicName} · {chapter.translation}
-        </div>
+        {(() => {
+          const parts = chapter.title.split(" – ");
+          const name     = parts[0];
+          const subtitle = parts.slice(1).join(" – ");
+          return (
+            <>
+              <div
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontWeight: 600,
+                  fontSize: 17,
+                  color: "var(--on-surface)",
+                  marginBottom: subtitle ? 1 : 2,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {name}
+              </div>
+              {subtitle && (
+                <div
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: 14,
+                    fontWeight: 500,
+                    color: "var(--on-surface-var)",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    marginBottom: 2,
+                  }}
+                >
+                  {subtitle}
+                </div>
+              )}
+              <div
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 12,
+                  color: "var(--on-surface-var)",
+                  fontStyle: "italic",
+                }}
+              >
+                {chapter.arabicName} · {chapter.translation}
+              </div>
+            </>
+          );
+        })()}
       </div>
 
       {/* Status badges */}

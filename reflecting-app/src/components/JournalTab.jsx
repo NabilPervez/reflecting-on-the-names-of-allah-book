@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { dbGetAllReflections, dbDeleteReflection } from "../lib/db.js";
 import { pageWrap, pageTitle, pageSubtitle, card, chipBtn, skeletonLine } from "../lib/styles.js";
 
-function ReflectionCard({ reflection, chapter, onDelete, onGoToChapter }) {
+function ReflectionCard({ reflection, chapter, onDelete, onGoToReflection }) {
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   const hasNotes   = reflection.notes?.trim();
@@ -70,22 +70,17 @@ function ReflectionCard({ reflection, chapter, onDelete, onGoToChapter }) {
             lineHeight: 1.7,
             color: "var(--on-surface-var)",
             marginBottom: 14,
-            display: "-webkit-box",
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
           }}
         >
           "{reflection.notes.trim()}"
         </p>
       )}
 
-      {/* Action items preview */}
+      {/* Action items – show all */}
       {hasActions && (
         <div style={{ marginBottom: 14 }}>
           {reflection.actionItems
             .filter((a) => a?.trim())
-            .slice(0, 2)
             .map((a, idx) => (
               <div
                 key={idx}
@@ -99,24 +94,47 @@ function ReflectionCard({ reflection, chapter, onDelete, onGoToChapter }) {
                 }}
               >
                 <span style={{ color: "var(--primary)", flexShrink: 0 }}>▸</span>
-                <span
-                  style={{
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
-                  {a}
-                </span>
+                <span>{a}</span>
               </div>
             ))}
+        </div>
+      )}
+
+      {/* Du'a */}
+      {hasDuas && (
+        <div style={{ marginBottom: 14 }}>
+          <div
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "var(--primary)",
+              marginBottom: 4,
+            }}
+          >
+            ☽ Du'a
+          </div>
+          <p
+            style={{
+              fontFamily: "'Merriweather', Georgia, serif",
+              fontSize: 12,
+              lineHeight: 1.7,
+              color: "var(--on-surface-var)",
+              margin: 0,
+              fontStyle: "italic",
+            }}
+          >
+            {reflection.duas.trim()}
+          </p>
         </div>
       )}
 
       {/* Buttons */}
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         <button
-          onClick={() => onGoToChapter(reflection.nameId)}
+          onClick={() => onGoToReflection(reflection.nameId)}
           style={{ ...chipBtn, background: "var(--primary)", color: "var(--on-primary)", fontWeight: 600 }}
         >
           Open & Edit →
@@ -304,7 +322,7 @@ export default function JournalTab({ chapters, onGoToChapter, showToast }) {
             reflection={r}
             chapter={chapterMap[r.nameId]}
             onDelete={handleDelete}
-            onGoToChapter={onGoToChapter}
+            onGoToReflection={onGoToChapter}
           />
         ))
       )}

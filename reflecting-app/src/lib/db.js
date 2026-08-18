@@ -120,3 +120,21 @@ export async function dbToggleBookmark(nameId, page = 0) {
     req.onerror   = () => reject(req.error);
   });
 }
+
+/** Update the saved page of an existing bookmark (does nothing if not bookmarked). */
+export async function dbUpdateBookmarkPage(nameId, page) {
+  const db = await openDB();
+  return new Promise(async (resolve, reject) => {
+    const tx    = db.transaction(BOOKMARKS_STORE, "readwrite");
+    const store = tx.objectStore(BOOKMARKS_STORE);
+    const existing = await new Promise((r, e) => {
+      const g = store.get(nameId);
+      g.onsuccess = () => r(g.result);
+      g.onerror   = () => e(g.error);
+    });
+    if (!existing) { resolve(); return; }
+    const req = store.put({ nameId, page });
+    req.onsuccess = () => resolve();
+    req.onerror   = () => reject(req.error);
+  });
+}
