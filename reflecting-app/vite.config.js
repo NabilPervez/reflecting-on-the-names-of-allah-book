@@ -7,17 +7,19 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "favicon.ico"],
+      includeAssets: ["favicon.svg", "favicon.ico", "apple-touch-icon.png"],
       manifest: {
-        name: "Names of Allah",
+        name: "Reflecting on the Names of Allah",
         short_name: "Allah's Names",
         description:
           "Read and reflect on Jinan Yousef's book Reflecting on the Names of Allah. Save personal notes, action items, and du'as — all stored privately on your device.",
         theme_color: "#1b4332",
-        background_color: "#f8f5f0",
+        background_color: "#1b4332",
         display: "standalone",
         orientation: "portrait",
         start_url: "/",
+        scope: "/",
+        id: "/",
         icons: [
           { src: "pwa-192x192.png", sizes: "192x192", type: "image/png" },
           { src: "pwa-512x512.png", sizes: "512x512", type: "image/png" },
@@ -25,8 +27,9 @@ export default defineConfig({
             src: "pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "maskable",
+            purpose: "maskable any",
           },
+          { src: "apple-touch-icon.png", sizes: "180x180", type: "image/png" },
         ],
       },
       workbox: {
